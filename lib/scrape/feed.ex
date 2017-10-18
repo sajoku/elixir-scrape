@@ -80,7 +80,7 @@ defmodule Scrape.Feed do
 
   defp find_pubdate(item) do
     item
-    |> Exquery.find("updated,pubDate,pubdate,dc:date", :first)
+    |> Exquery.find("dc|update,updated,pubDate,pubdate", :first)
     |> clean_text
     |> try_date
   end
