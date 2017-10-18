@@ -80,7 +80,7 @@ defmodule Scrape.Feed do
 
   defp find_pubdate(item) do
     item
-    |> Exquery.find("dc|update,updated,pubDate,pubdate", :first)
+    |> Exquery.find("dc|date,dc:date,updated,pubDate,pubdate", :first)
     |> clean_text
     |> try_date
   end
@@ -92,7 +92,7 @@ defmodule Scrape.Feed do
   end
 
   @datetime_patterns [
-    "{ISO}", "{ISOz}", "{RFC3339}", "{RFC3339z}", "{RFC1123z}", "{RFC1123}",
+    "{ISO}", "{ISOdate}", "{ISOz}", "{RFC3339}", "{RFC3339z}", "{RFC1123z}", "{RFC1123}",
     "{RFC822}", "{RFC822z}", "{ANSIC}", "{UNIX}"
   ]
 
